@@ -2,6 +2,8 @@
         alias(libs.plugins.android.application)
         alias(libs.plugins.kotlin.android)
         alias(libs.plugins.kotlin.compose)
+        alias(libs.plugins.ksp)
+
     }
 
     android {
@@ -15,7 +17,14 @@
             targetSdk = 33
             versionCode = 1
             versionName = "1.0"
-
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments += mapOf(
+                        // tell Room where to write JSON schemas
+                        "room.schemaLocation" to "$projectDir/schemas".toString()
+                    )
+                }
+            }
         }
 
         buildTypes {
@@ -58,6 +67,9 @@
         implementation(libs.androidx.watchface.complications.data.source.ktx)
         implementation(libs.androidx.appcompat)
         implementation(libs.androidx.constraintlayout)
+        implementation(libs.room.runtime)    // androidx.room:room-runtime:2.7.1 :contentReference[oaicite:7]{index=7}
+        implementation(libs.room.ktx)        // androidx.room:room-ktx:2.7.1 :contentReference[oaicite:8]{index=8}
+        ksp(libs.room.compiler)              // androidx.room:room-compiler:2.7.1 via KSP :contentReference[oaicite:9]{index=9}
         implementation(libs.material)
         implementation(libs.androidx.wear)
         // Core Compose BOM

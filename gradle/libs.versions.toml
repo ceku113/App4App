@@ -29,6 +29,9 @@ tilesToolingPreview = "1.4.1"
 horologistComposeTools = "0.6.23"
 horologistTiles = "0.6.23"
 watchfaceComplicationsDataSourceKtx = "1.2.1"
+room = "2.7.1"      # latest stable Room release (Apr 23, 2025) :contentReference[oaicite:0]{index=0}
+ksp = "2.0.21-1.0.26"  # matching KSP for Kotlin 2.0.x :contentReference[oaicite:1]{index=1}
+
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -68,10 +71,14 @@ horologist-compose-tools = { group = "com.google.android.horologist", name = "ho
 horologist-tiles = { group = "com.google.android.horologist", name = "horologist-tiles", version.ref = "horologistTiles" }
 androidx-watchface-complications-data-source-ktx = { group = "androidx.wear.watchface", name = "watchface-complications-data-source-ktx", version.ref = "watchfaceComplicationsDataSourceKtx" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+room-runtime   = { module = "androidx.room:room-runtime", version.ref = "room" }       # runtime :contentReference[oaicite:2]{index=2}
+room-ktx       = { module = "androidx.room:room-ktx",     version.ref = "room" }       # Kotlin extensions & Coroutines :contentReference[oaicite:3]{index=3}
+room-compiler  = { module = "androidx.room:room-compiler",  version.ref = "room" }       # annotation processor :contentReference[oaicite:4]{index=4}
+ksp            = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }  # KSP plugin :contentReference[oaicite:5]{index=5}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
