@@ -1,0 +1,21 @@
+<!-- res/drawable/ic_smoke.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Gövde: beyaz dolgu, ince siyah çizgi -->
+    <path
+        android:name="smoke_body"
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M6,18 h30 v6 h-30 z" />
+    <!-- Yanık ucu: turuncu vurgusu -->
+    <path
+        android:name="smoke_tip"
+        android:fillColor="#FF9800"
+        android:strokeColor="#FF9800"
+        android:strokeWidth="1"
+        android:pathData="M36,18 c4,0 4,6 0,6" />
+</vector>

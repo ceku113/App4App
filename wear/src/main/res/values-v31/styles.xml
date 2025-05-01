@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- wear/src/main/res/values-v31/styles.xml -->
+<resources>
+    <!-- values-v31/styles.xml -->
+    <style name="MainActivityTheme.Starting" parent="Theme.SplashScreen">
+        <!-- use your defined primary_500 as background instead of black -->
+        <item name="android:windowSplashScreenBackground">@color/primary_500</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+    </style>
+</resources>
