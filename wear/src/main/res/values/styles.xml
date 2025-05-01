@@ -1,0 +1,13 @@
+<resources>
+    <!-- 1a) Base app theme -->
+    <style name="MainActivityTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_500</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <!-- Add other necessary color definitions -->
+    </style>
+
+    <style name="MainActivityTheme.Starting" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- match your activity background to primary_500 for consistency -->
+        <item name="android:windowBackground">@color/primary_500</item>
+    </style>
+</resources>

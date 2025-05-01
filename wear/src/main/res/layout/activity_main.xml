@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.drawer.WearableDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        app:layout_boxedEdges="all">
+    
+        <!-- Cigarette Image -->
+        <ImageView
+            android:id="@+id/imgCigarette"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/cigarette_icon"
+            android:src="@drawable/ic_smoke"
+            app:layout_constraintBottom_toTopOf="@+id/btnDecrease"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Decrease Button -->
+
+        <!-- Count Display -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDecrease"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/primary_500"
+            android:textColor="@color/on_primary"
+            app:iconTint="@color/on_primary"
+            android:text="@string/minus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgCigarette" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:textColor="@color/on_primary"
+            android:text="@string/_0"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            app:layout_constraintBaseline_toBaselineOf="@id/btnDecrease"
+            app:layout_constraintEnd_toStartOf="@id/btnIncrease"
+            app:layout_constraintStart_toEndOf="@id/btnDecrease" />
+
+        <!-- Increase Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIncrease"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="64dp"
+            android:background="@color/primary_500"
+            android:text="@string/plus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgCigarette" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.wear.widget.drawer.WearableDrawerLayout>
