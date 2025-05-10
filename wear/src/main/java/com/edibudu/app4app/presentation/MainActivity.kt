@@ -3,7 +3,6 @@ package com.edibudu.app4app.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels                              // ← needed for viewModels delegate :contentReference[oaicite:4]{index=4}
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -16,8 +15,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider                        // ← needed for Factory interface :contentReference[oaicite:5]{index=5}
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Scaffold
@@ -26,30 +23,14 @@ import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import com.edibudu.app4app.R
-import com.edibudu.app4app.repository.UserPrefsRepository
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    // 1) Repository instance
-    private val repo by lazy { UserPrefsRepository(this) }
 
-    // 2) ViewModel factory
-    private val factory = object : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            @Suppress("UNCHECKED_CAST")
-            return MainViewModel(repo) as T
-        }
-    }
-
-    // 3) ViewModel via delegate + factory
-    private val vm: MainViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // Collect the count Flow from VM as Compose state :contentReference[oaicite:6]{index=6}
-            val count by vm.count.collectAsState()
-
             MaterialTheme {
                 var showSmoke by remember { mutableStateOf(false) }
 
