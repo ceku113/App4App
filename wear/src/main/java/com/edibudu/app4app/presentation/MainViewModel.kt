@@ -1,24 +1,21 @@
 package com.edibudu.app4app.presentation
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.edibudu.app4app.repository.UserPrefsRepository
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import com.edibudu.app4app.data.repository.SmokeRepository
+import com.edibudu.app4app.repository.entities.WearEntity
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repo: UserPrefsRepository): ViewModel() {
-    val count = repo.todayCountFlow
-        .stateIn(viewModelScope, SharingStarted.Lazily, 0)        // expose as StateFlow :contentReference[oaicite:8]{index=8}
+class WearViewModel(application: Application) : AndroidViewModel(application) {
+    private val dao = SmokeRepository.getDatabase(application).wearDao()
 
-    fun onSmoke() {
-        viewModelScope.launch { repo.incrementCount() }            // increment via DataStore :contentReference[oaicite:9]{index=9}
+    val allItems: Flow<List<WearEntity>> = dao.getAllItems()
+
+    fun insert(content: String) {
+        viewModelScope.launch {
+            dao.insertItem(WearEntity(content = content, timestamp = System.currentTimeMillis()))
+        }
     }
-
-    fun decrement() {
-        viewModelScope.launch { repo.decrementCount() }            // optional: implement decrement in repo
-    }
-
-
 }
