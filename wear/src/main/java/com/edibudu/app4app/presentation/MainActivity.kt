@@ -24,14 +24,20 @@ import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import com.edibudu.app4app.R
 import kotlinx.coroutines.launch
+import androidx.activity.viewModels
 
 class MainActivity : ComponentActivity() {
-
+    private val viewModel: WearViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
+                // 1) Akışı State’e dönüştür, boş listeyle başlat
+                val items by viewModel.allItems.collectAsState(initial = emptyList())
+                // 2) count = kayıt sayısı
+                val count = items.size
+
                 var showSmoke by remember { mutableStateOf(false) }
 
                 Scaffold(
@@ -49,6 +55,7 @@ class MainActivity : ComponentActivity() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.spacedBy(2.dp)
                         ) {
+                            // **Görsel + animasyon**
                             Box(
                                 modifier = Modifier
                                     .size(80.dp)
@@ -73,20 +80,22 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
 
+                            // **Butonlar**
                             Row(horizontalArrangement = Arrangement.spacedBy(25.dp)) {
                                 Button(onClick = {
-                                    vm.decrement()                              // ← route decrement through VM
+                                    // istersen decrement için ayrı bir metod ekle
                                 }) {
                                     Text(text = "–")
                                 }
                                 Button(onClick = {
-                                    vm.onSmoke()                                  // ← route increment through VM :contentReference[oaicite:7]{index=7}
+                                    viewModel.insert(1)    // 1 adet sigara kaydı ekle
                                     showSmoke = true
                                 }) {
                                     Text(text = "+")
                                 }
                             }
 
+                            // **Sayaç**
                             Text(
                                 text = count.toString(),
                                 style = MaterialTheme.typography.title1,
@@ -99,6 +108,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Composable
 fun SmokeEmitter(

@@ -1,15 +1,15 @@
-package com.edibudu.app4app.data.repository
+package com.edibudu.app4app.repository
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.edibudu.app4app.dao.SmokeDao
-import com.edibudu.app4app.repository.entities.WearEntity
+import com.edibudu.app4app.repository.entities.SmokeEntity
 
 // wear/src/main/java/com/example/app4app/wear/data/database/WearDatabase.kt
 @Database(
-    entities = [WearEntity::class],
+    entities = [SmokeEntity::class],
     version = 1,
     exportSchema = false
 )
