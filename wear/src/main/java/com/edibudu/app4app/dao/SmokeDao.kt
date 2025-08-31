@@ -19,7 +19,18 @@ interface SmokeDao {
     @Delete
     suspend fun deleteItem(item: SmokeEntity)
 
+    @Query("SELECT * FROM smoke WHERE timestamp BETWEEN :start AND :end ORDER BY timestamp DESC")
+    fun getItemsBetween(start: Long, end: Long): Flow<List<SmokeEntity>>
 
 
-
+    @Query("""
+    DELETE FROM smoke 
+     WHERE id = (
+       SELECT id 
+         FROM smoke             
+        ORDER BY timestamp DESC 
+        LIMIT 1
+     )
+  """)
+    suspend fun deleteLatest()
 }

@@ -83,12 +83,12 @@ class MainActivity : ComponentActivity() {
                             // **Butonlar**
                             Row(horizontalArrangement = Arrangement.spacedBy(25.dp)) {
                                 Button(onClick = {
-                                    // istersen decrement için ayrı bir metod ekle
+                                    viewModel.deleteLatest()    // son sigara kaydını sil
                                 }) {
                                     Text(text = "–")
                                 }
                                 Button(onClick = {
-                                    viewModel.insert(1)    // 1 adet sigara kaydı ekle
+                                    viewModel.insert()    // 1 adet sigara kaydı ekle
                                     showSmoke = true
                                 }) {
                                     Text(text = "+")

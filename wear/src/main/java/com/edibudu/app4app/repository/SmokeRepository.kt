@@ -10,7 +10,7 @@ import com.edibudu.app4app.repository.entities.SmokeEntity
 // wear/src/main/java/com/example/app4app/wear/data/database/WearDatabase.kt
 @Database(
     entities = [SmokeEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class SmokeRepository : RoomDatabase() {
